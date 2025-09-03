@@ -1,0 +1,36 @@
+html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:#222;display:flex;min-height:100vh;flex-direction:column}
+main{flex:1}
+header,footer{background:#000;color:#fff;padding:12px}
+header a,footer a{color:#fff;text-decoration:none}
+.container{max-width:960px;margin:0 auto;padding:16px}
+.nav{display:flex;gap:12px;flex-wrap:wrap}
+.nav a{padding:6px 10px;border-radius:6px}
+.nav a.active,.nav a:hover{background:rgba(255,255,255,.2)}
+.hero{padding:24px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+
+/* Utilities */
+.ml-auto{margin-left:auto}
+.mt-12{margin-top:12px}
+
+/* Tables */
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+
+/* Consent modal */
+.no-scroll{overflow:hidden}
+#consent-overlay{position:fixed;inset:0;display:none;z-index:10000}
+#consent-overlay .consent-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+#consent-overlay .consent-modal{position:relative;max-width:640px;margin:10vh auto;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+#consent-overlay .consent-content{padding:20px}
+.consent-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:12px}
+.btn{appearance:none;border:0;border-radius:8px;padding:10px 14px;cursor:pointer}
+.btn-primary{background:#0d6efd;color:#fff}
+.btn-secondary{background:#6c757d;color:#fff}
+
+/* Manage consent floating button */
+.consent-manage-btn{position:fixed;right:16px;bottom:16px;z-index:9999;background:#000;color:#fff;border:1px solid rgba(255,255,255,.2);padding:10px 14px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer}
+.consent-manage-btn:hover{background:#111}
+@media(max-width:700px){.consent-manage-btn{right:12px;bottom:12px;padding:9px 12px;font-size:14px}}

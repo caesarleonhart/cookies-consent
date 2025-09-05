@@ -21,3 +21,15 @@ try {
 	echo 'Database connection failed. Please check configuration in config.php';
 	exit;
 }
+
+function base_url($path = '') {
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
+    $url .= "://".$_SERVER['HTTP_HOST'];
+    
+    // Always return the project root: /cookies-consent
+    // This is the simplest and most reliable approach
+    $project_path = '/cookies-consent';
+    
+    $url .= $project_path;
+    return $url . '/' . ltrim($path, '/');
+}

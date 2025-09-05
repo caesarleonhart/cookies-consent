@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['admin_user_id'])) {
-	header('Location: /admin/login.php');
+	header('Location: ' . base_url('admin/login.php'));
 	exit;
 }
 
@@ -39,15 +39,16 @@ $pages = (int)ceil($total / $perPage);
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Admin Dashboard</title>
-	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
+	<script>window.BASE_URL = '<?= base_url() ?>';</script>
 </head>
 <body>
 	<header>
 		<div class="container">
 			<nav class="nav">
-				<a href="/index.php">Home</a>
+				<a href="<?= base_url('index.php') ?>">Home</a>
 				<span class="ml-auto">Logged in as <?php echo htmlspecialchars($_SESSION['admin_username']); ?></span>
-				<a href="/admin/logout.php">Logout</a>
+				<a href="<?= base_url('admin/logout.php') ?>">Logout</a>
 			</nav>
 		</div>
 	</header>

@@ -5,17 +5,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home - Cookies Consent Demo</title>
-	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
+	<script>window.BASE_URL = '<?= base_url() ?>';</script>
 </head>
 <body>
 	<header>
 		<div class="container">
 			<nav class="nav">
-				<a class="active" href="/index.php">Home</a>
-				<a href="/about.php">About / Contact</a>
-				<a href="/privacy.php">Privacy Policy</a>
-				<a href="/terms.php">Terms & Conditions</a>
-				<a href="/admin/login.php" class="ml-auto">Admin</a>
+				<a class="active" href="<?= base_url('index.php') ?>">Home</a>
+				<a href="<?= base_url('about.php') ?>">About / Contact</a>
+				<a href="<?= base_url('privacy.php') ?>">Privacy Policy</a>
+				<a href="<?= base_url('terms.php') ?>">Terms & Conditions</a>
+				<a href="<?= base_url('admin/login.php') ?>" class="ml-auto">Admin</a>
 			</nav>
 		</div>
 	</header>
@@ -38,6 +39,6 @@
 	<footer>
 		<div class="container">&copy; <?php echo date('Y'); ?> Cookies Consent Demo</div>
 	</footer>
-	<script src="/assets/consent.js"></script>
+	<script src="<?= base_url('assets/consent.js') ?>"></script>
 </body>
 </html>

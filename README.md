@@ -28,41 +28,20 @@ A 4-page PHP website with a privacy consent banner, MySQL logging, and a secure 
 - `/config.php` PDO DB connection
 
 ## Database Setup
-Create a database (default name: `cookies_consent_db`) and run the schema below.
 
-```sql
-CREATE TABLE IF NOT EXISTS consent_log (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    guid CHAR(36) NOT NULL,
-    consent_time DATETIME NOT NULL,
-    version INT NOT NULL
-);
+### Step 1: Create Database
+1. Open phpMyAdmin (usually at `http://localhost/phpmyadmin`)
+2. Click "New" to create a new database
+3. Name it `cookies_consent_db`
+4. Click "Create"
 
-CREATE TABLE IF NOT EXISTS admin_users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL
-);
-```
+### Step 2: Import Setup File
+1. Select the `cookies_consent_db` database
+2. Click the "Import" tab
+3. Click "Choose File" and select `database_setup.sql`
+4. Click "Go" to import
 
-Seed a default admin user (username: `admin`, password: `admin123`):
-
-```php
-<?php
-// Run this once from a temporary file or interactive shell
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=cookies_consent_db;charset=utf8mb4','root','', [
-    PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
-]);
-$hash = password_hash('admin123', PASSWORD_DEFAULT);
-$pdo->prepare('INSERT INTO admin_users (username, password_hash) VALUES (?, ?)')->execute(['admin', $hash]);
-```
-
-## Configuring Database Connection
-Edit `/config.php` or set environment variables:
-- `DB_HOST` (default `127.0.0.1`)
-- `DB_NAME` (default `cookies_consent_db`)
-- `DB_USER` (default `root`)
-- `DB_PASS` (default empty)
+This will automatically create all necessary tables and seed a default admin user (username: `admin`, password: `admin123`).
 
 ## Running Locally
 Using PHP built-in server from the repo root:
@@ -87,3 +66,19 @@ Open `http://127.0.0.1:8000`.
 ## Cookie Details
 - `site_consent`: Stores consent data (GUID, timestamp, version) for 1 year
 - `site_decline`: Stores decline timestamp for 1 day
+
+## Troubleshooting
+
+### Can't login to admin panel?
+- Make sure you imported the `database_setup.sql` file correctly
+- Check that the database name is exactly `cookies_consent_db`
+- Verify your database credentials in `config.php` match your MySQL setup
+
+### Assets not loading (CSS/JS broken)?
+- Make sure you're running the site from the correct URL (e.g., `http://localhost/cookies-consent/`)
+- Check that all files are in the correct directory structure
+
+### Database connection errors?
+- Ensure MySQL is running
+- Check the database credentials in `config.php`
+- Make sure the database `cookies_consent_db` exists

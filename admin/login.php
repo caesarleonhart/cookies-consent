@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if ($user && password_verify($password, $user['password_hash'])) {
 			$_SESSION['admin_user_id'] = $user['id'];
 			$_SESSION['admin_username'] = $user['username'];
-			header('Location: /admin/dashboard.php');
+			header('Location: ' . base_url('admin/dashboard.php'));
 			exit;
 		} else {
 			$error = 'Invalid username or password';
@@ -41,16 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Admin Login</title>
-	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
+	<script>window.BASE_URL = '<?= base_url() ?>';</script>
 </head>
 <body>
 	<header>
 		<div class="container">
 			<nav class="nav">
-				<a href="/index.php">Home</a>
-				<a href="/about.php">About / Contact</a>
-				<a href="/privacy.php">Privacy Policy</a>
-				<a href="/terms.php">Terms & Conditions</a>
+				<a href="<?= base_url('index.php') ?>">Home</a>
+				<a href="<?= base_url('about.php') ?>">About / Contact</a>
+				<a href="<?= base_url('privacy.php') ?>">Privacy Policy</a>
+				<a href="<?= base_url('terms.php') ?>">Terms & Conditions</a>
 			</nav>
 		</div>
 	</header>
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<?php if ($error): ?>
 			<p class="text-error"><?php echo htmlspecialchars($error); ?></p>
 		<?php endif; ?>
-		<form method="post" action="/admin/login.php" class="form-card">
+		<form method="post" action="<?= base_url('admin/login.php') ?>" class="form-card">
 			<label>Username<br>
 				<input type="text" name="username" required class="input">
 			</label>

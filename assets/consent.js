@@ -31,7 +31,7 @@
 				'<div class="consent-content">'+
 					'<h2 id="consent-title">Privacy & Cookies</h2>'+
 					'<p>Cookies are necessary for this website to function properly, for performance measurement, and to provide you with the best experience.</p>'+
-					'<p>By continuing to access or use this site, you acknowledge and consent to our use of cookies in accordance with our <a href="/terms.php">Terms & Conditions</a> and <a href="/privacy.php">Privacy Statement</a>.</p>'+
+					'<p>By continuing to access or use this site, you acknowledge and consent to our use of cookies in accordance with our <a href="' + (window.BASE_URL || '') + 'terms.php">Terms & Conditions</a> and <a href="' + (window.BASE_URL || '') + 'privacy.php">Privacy Statement</a>.</p>'+
 					'<div class="consent-actions">'+
 						'<button id="consent-accept" class="btn btn-primary">Accept</button>'+
 						'<button id="consent-decline" class="btn btn-secondary">Decline</button>'+
@@ -66,7 +66,7 @@
 
 	async function recordAcceptance(){
 		try{
-			var res = await fetch('/consent_api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'accept' }) });
+			var res = await fetch((window.BASE_URL || '') + 'consent_api.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'accept' }) });
 			if(!res.ok){ throw new Error('Network error'); }
 			var data = await res.json();
 			if(data.status === 'ok'){

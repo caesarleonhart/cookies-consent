@@ -15,6 +15,7 @@ A 4-page PHP website with a privacy consent banner, MySQL logging, and a secure 
 - Web server (Apache/Nginx) or PHP built-in server
 
 ## Project Structure
+Please make sure that the main folder is named `cookies-consent`
 - `/index.php` Home
 - `/about.php` About/Contact
 - `/privacy.php` Privacy Policy
